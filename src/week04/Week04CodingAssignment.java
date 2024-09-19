@@ -101,14 +101,20 @@ public class Week04CodingAssignment {
     // 13. Create a method of your own that solves a problem.
     // In comments, write what the method does and why you
     //created it.
+    
+    // setup
     Scanner sc = new Scanner(System.in);
     boolean quit = false;
     
+    // roll a die!
     do {
+      
+      // prompt for user input
       System.out.println("Roll a die of how many sides? (3-20). 0 to quit.");
       int sides = sc.nextInt();
       sc.nextLine();
       
+      // check for valid input. if valid, roll the die
       if (sides == 0) {
         System.out.println("Goodbye!");
         quit = true;
@@ -206,8 +212,13 @@ public class Week04CodingAssignment {
   // In comments, write what the method does and why you
   //created it.
   public static int rollDie(int sides) {
+    
+    // instantiate random class
     Random rand = new Random();
+    
+    // generate random number between 1 - number of sides given
     int result = rand.nextInt(sides);
+  
     return result;
     
   }
