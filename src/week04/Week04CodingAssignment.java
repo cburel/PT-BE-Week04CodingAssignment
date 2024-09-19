@@ -1,5 +1,8 @@
 package week04;
 
+import java.util.Random;
+import java.util.Scanner;
+
 public class Week04CodingAssignment {
 
   public static void main(String[] args) {
@@ -83,6 +86,42 @@ public class Week04CodingAssignment {
     double[] doubles = {65.0, 35.5, 25.3};
     System.out.println(averageDouble(doubles));
     
+    // 11. take two arrays of double, return true if avg of
+    // elements in array 1 is greater than that of array 2
+    double[] doubleAvg1 = {65.0, 35.5, 25.3};
+    double[] doubleAvg2 = {15.4, 30.2, 1.1};
+    System.out.println(compareDoubleAverages(doubleAvg1, doubleAvg2));
+    
+    // 12. write willBuyDrink, returns true if it is hot outside
+    // and if money in pocket is greater than 10.50;
+    boolean isHotOutside = true;
+    double moneyInPocket = 12.50;
+    System.out.println(willBuyDrink(isHotOutside, moneyInPocket));
+    
+    // 13. Create a method of your own that solves a problem.
+    // In comments, write what the method does and why you
+    //created it.
+    Scanner sc = new Scanner(System.in);
+    boolean quit = false;
+    
+    do {
+      System.out.println("Roll a die of how many sides? (3-20). 0 to quit.");
+      int sides = sc.nextInt();
+      sc.nextLine();
+      
+      if (sides == 0) {
+        System.out.println("Goodbye!");
+        quit = true;
+      }
+      else if (sides < 3 || sides > 20) {
+        System.out.println("Must have 3-20 sides!");
+      }
+      else {
+        System.out.println("You rolled a " + rollDie(sides));
+      }
+      
+    } while (!quit);
+    
   }
   
   // 7. concatenates a string str for num amount of times
@@ -128,4 +167,48 @@ public class Week04CodingAssignment {
      return average / doubles.length;
   }
 
+  // 11. take two arrays of double, return true if avg of
+  // elements in array 1 is greater than that of array 2
+  public static boolean compareDoubleAverages(double[] db1, double[] db2) {
+    double avg1 = 0.0;
+    double avg2 = 0.0;
+    
+    for (double db : db1) {
+      avg1 += db;
+    }
+    for (double db: db2) {
+      avg2 += db;
+    }
+    
+    avg1 = avg1 / db1.length;
+    avg2 = avg2 / db2.length;
+    
+    if (avg1 > avg2) {
+      return true;
+    }
+     
+    return false;
+  }
+  
+  // 12. write willBuyDrink, returns true if it is hot outside
+  // and if money in pocket is greater than 10.50;
+  public static boolean willBuyDrink(boolean isHotOutside, double moneyInPocket) {
+    
+    if (isHotOutside && moneyInPocket > 10.50) {
+      return true;
+    }
+    
+    return false;
+    
+  }
+  
+  // 13. Create a method of your own that solves a problem.
+  // In comments, write what the method does and why you
+  //created it.
+  public static int rollDie(int sides) {
+    Random rand = new Random();
+    int result = rand.nextInt(sides);
+    return result;
+    
+  }
 }
